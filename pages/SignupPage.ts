@@ -1,4 +1,3 @@
-// pages/SignupPage.ts
 import { Page, expect } from '@playwright/test';
 
 export class SignupPage {
@@ -14,12 +13,12 @@ export class SignupPage {
 }
 
   async fillSignupForm1(email: string) {
-    await this.page.getByRole('textbox', { name: 'Email address' }).fill(email);
+    await this.page.locator('#email').fill(email);
   }
 
   async fillSignupForm2(username: string, password: string) {
-    await this.page.getByRole('textbox', { name: 'Username' }).fill(username);
-    await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
+    await this.page.locator('#username').fill(username);
+    await this.page.locator('#password').fill(password);
   }
 
   async submit() {

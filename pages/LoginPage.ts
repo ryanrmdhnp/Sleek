@@ -13,19 +13,19 @@ export class LoginPage {
   }
 
   async login(email: string, password: string) {
-    await this.page.getByRole('textbox', { name: 'Email or username' }).fill(email);
+    await this.page.locator('#username').fill(email);
     await this.page.getByRole('button', { name: 'Continue', exact: true }).click();
-    await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
+    await this.page.locator('#password').fill(password);
     await this.page.getByRole('button', { name: 'Sign in' }).click();
   }
   
   async loginemail(email: string) {
-    await this.page.getByRole('textbox', { name: 'Email or username' }).fill(email);
+    await this.page.locator('#username').fill(email);
     await this.page.getByRole('button', { name: 'Continue', exact: true }).click();
   }
 
   async loginpassword(password: string) {
-    await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
+    await this.page.locator('#password').fill(password);
     await this.page.getByRole('button', { name: 'Sign in' }).click();
   }
 
