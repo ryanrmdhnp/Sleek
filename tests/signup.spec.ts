@@ -37,8 +37,6 @@ test.describe('Signup Flow', () => {
     await page.getByRole('textbox', { name: 'Password' }).click();
     await page.getByRole('textbox', { name: 'Password' }).fill('test123');
     await page.getByRole('button', { name: 'Sign up' }).click();
-    // const wrapper = page.locator('div:has(input[name="password"])');
-    // await expect(wrapper).toHaveCSS('border-color', '#d00e17');
     const passwordWrapper = page.locator('.c141f6ee9.ca2723af5.password.c2f342594');
     await expect(passwordWrapper).toBeVisible(); // ✅ Confirm it's on the page
     await expect(passwordWrapper).toHaveCSS('border-color', 'rgb(208, 14, 23)');

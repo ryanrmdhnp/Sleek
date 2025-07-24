@@ -29,7 +29,6 @@ test.describe('Login Flow', () => {
   });
 
   test('should login successfully with valid credentials', async ({ page }) => {
-    // You should replace with a real test account created manually or via API
     const email = 'test@example.com';
     const password = 'Test123!';
 
