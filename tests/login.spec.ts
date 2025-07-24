@@ -1,11 +1,15 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 
-test.describe('Login Flow', () => {
-  test('required field validation', async ({ page }) => {
-    const login = new LoginPage(page);
-    await login.goto();
+let login: LoginPage;
 
+test.describe('Login Flow', () => {
+  test.beforeEach(async ({ page }) => {
+    login = new LoginPage(page);
+    await login.goto();
+  });
+
+  test('required field validation', async ({ page }) => {
     let email = '';
     await login.loginemail(email);
     await login.expectUsernameEmpty();
@@ -19,9 +23,6 @@ test.describe('Login Flow', () => {
   });
 
   test('should show error on invalid credentials', async ({ page }) => {
-    const login = new LoginPage(page);
-    await login.goto();
-
     const email = 'test@example.com';
     const password = 'wrongpassword';
     await login.login(email, password);
@@ -29,9 +30,6 @@ test.describe('Login Flow', () => {
   });
 
   test('should login successfully with valid credentials', async ({ page }) => {
-    const login = new LoginPage(page);
-    await login.goto();
-
     const email = 'test@example.com';
     const password = 'Test123!';
     await login.login(email, password);
